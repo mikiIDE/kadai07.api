@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>つくおき検索</title>
+</head>
+
+<body>
+    <!-- とりあえず隠しリンク -->
+    <div class="secret">
+        <a href="somehow-geoguessor.html">地図で遊ぶ？</a>
+    </div>
+    <!-- 以下がメイン -->
+    <h1 class="title">作り置きして平日楽しよ…</h1>
+    <div class="search">
+        <button id="search_btn">探す</button>
+        <button id="saved">お気に入りを見る</button>
+    </div>
+    <div class="tired">
+        <img src="img/DSC_03482.png" width="300" alt="疲れてるひよこのイラスト">
+        <img src="img/kutakuta-1024x1024.png" width="300" alt="疲れてるひよこのイラスト">
+        <!-- フリーイラストの提供元はこちら→ https://hiyokoyarou.com/category/sozai/ -->
+    </div>
+    <div class="result">
+        <ul id="recipe_list">
+            <!-- ここに検索結果を表示する -->
+        </ul>
+    </div>
+    <div id="saved_recipes_container">
+        <div class="flex">
+            <h2>お気に入りレシピ</h2>
+            <button id="back">戻る</button>
+        </div>
+        <ul id="saved_recipes">
+            <!-- ここに保存したレシピが表示される -->
+        </ul>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
+    <!-- FireBaseの貼り付け -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getDatabase, ref, set, update, onValue }
+            from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // 以下を消してアップロードする！！！！！！！！！！
+        const firebaseConfig = {
+                apiKey: "***************",
+                authDomain: "***************",
+                projectId: "***************",
+                storageBucket: "***************",
+                messagingSenderId: "***************",
+                appId: "***************",
+            }; 
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app); // RealtimeDatabase使うよ
+        //jsファイルに書き込むため、グローバルスコープ(window.**)に関数を準備する
+        window.db = db;
+        window.ref = ref;
+        window.set = set;
+        window.update = update;
+        window.onValue = onValue;
+    </script>
+    <!-- 自作JSファイルを一番最後に、またはdeferを末尾に追加して上で読み込む -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

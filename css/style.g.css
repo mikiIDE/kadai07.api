@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 20px;
+}
+
+.title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#container {
+    display: flex;
+}
+
+#map,#streetView {
+    width: 50%;
+    height: 500px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
